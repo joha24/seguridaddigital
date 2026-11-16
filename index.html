@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seguridad Personal Tecnológica</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #fef2f2 0%, #eff6ff 100%);
+            color: #FFC9C9
+;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* ===== NAVBAR ===== */
+        nav {
+            background: linear-gradient(90deg, #b5caff, #fcc5c5);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px #FF637E(46, 68, 129, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            color: #fff;
+            font-size: 1.3rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            width: 300;
+        }
+
+        .logo span {
+            font-size: 1.6rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: #fefeffca;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.4rem 0.8rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color:#000000;
+            transform: translateY(-2px);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            background: linear-gradient(135deg, #d0d9f0 0%, #eec3c3 100%);
+            color: #fff;
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(20px, -20px); }
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* ===== SECTIONS ===== */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: #ec9ac7;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #c7cfe6, #da6767);
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* ===== PROBLEMA ===== */
+        .problema-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 40px rgba(30, 58, 138, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            border-left: 6px solid #f8d7d7;
+            transition: transform 0.3s ease;
+        }
+
+        .problema-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .problema-icon {
+            font-size: 4rem;
+            background: #fee2e2;
+            border-radius: 50%;
+            padding: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .problema-card h3 {
+            color: #f3bbbb;
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .problema-card p {
+            color: #4b5563;
+        }
+
+        /* ===== INFORMACIÓN ===== */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .info-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 8px 30px rgba(30, 58, 138, 0.08);
+            text-align: center;
+            transition: all 0.3s ease;
+            border-top: 4px solid transparent;
+        }
+
+        .info-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(30, 58, 138, 0.15);
+        }
+
+        .info-card:nth-child(1) { border-top-color: #c5d1f1; }
+        .info-card:nth-child(2) { border-top-color: #ebc8c8; }
+        .info-card:nth-child(3) { border-top-color: #7c3aed; }
+
+        .info-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-card h3 {
+            color: #db2672;
+            margin-bottom: 0.8rem;
+        }
+
+        .info-card p {
+            color: #6b7280;
+            font-size: 0.95rem;
+        }
+
+        /* ===== JUEGO ===== */
+        .juego-section {
+            background: linear-gradient(135deg, #c5cee6, #ee9b9b);
+            border-radius: 20px;
+            color: #fff;
+            padding: 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .juego-section::before {
+            content: '🎮';
+            position: absolute;
+            font-size: 8rem;
+            opacity: 0.1;
+            right: -1rem;
+            bottom: -2rem;
+            transform: rotate(-15deg);
+        }
+
+        .juego-section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .juego-section p {
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .btn-jugar {
+            background: #fff;
+            color: #c3d2fc;
+            border: none;
+            padding: 0.9rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-jugar:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 25px rgba(0,0,0,0.3);
+            background: #fee2e2;
+        }
+
+        /* ===== QUIZ MODAL ===== */
+        .quiz-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 200;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .quiz-modal.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .quiz-content {
+            background: #fff;
+            border-radius: 20px;
+            padding: 2.5rem;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .quiz-content h2 {
+            color: #c2cef0;
+            margin-bottom: 1.5rem;
+        }
+
+        .quiz-question {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: #374151;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .quiz-option {
+            padding: 0.9rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: #f9fafb;
+        }
+
+        .quiz-option:hover {
+            border-color: #eeb0b0;
+            background: #fef2f2;
+        }
+
+        .quiz-option.correct {
+            border-color: #e63387;
+            background: #f0fdf4;
+        }
+
+        .quiz-option.wrong {
+            border-color: #aea1ce;
+            background: #fef2f2;
+        }
+
+        .quiz-result {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 1rem;
+            color: #a9bae9;
+        }
+
+        .btn-cerrar {
+            margin-top: 1rem;
+            background: #819acc;
+            color: #fff;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-cerrar:hover {
+            background: #c1cddf;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: linear-gradient(90deg, #d5dffc, #dda3a3);
+            color: #dbbcbc;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            margin: 0.3rem 0;
+        }
+
+        footer .creditos {
+            color: #fff;
+            font-weight: 500;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .problema-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .nav-links {
+                justify-content: center;
+                width: 100%;
+            }
+            
+            .juego-section {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="logo">
+            
+            <span></span> Seguridad Digital
+        </div>
+        <ul class="nav-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#problema">Problema</a></li>
+            <li><a href="#informacion">Información</a></li>
+            <li><a href="#juego">Juego</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO / INICIO -->
+    <section class="hero" id="inicio">
+        <div class="hero-icon">🔒</div>
+        <h1>Seguridad Personal Tecnológica</h1>
+        <p>Tu seguridad y datos son importantes</p>
+    </section>
+
+    <!-- PROBLEMA -->
+    <section class="container" id="problema">
+        <h2 class="section-title">¿Cuál es el problema?</h2>
+        <div class="problema-card">
+            <div class="problema-icon">🛡️</div>
+            <div>
+                <h3>⚠️ Mal uso de la tecnología</h3>
+                <p>La falta de preocupación y compartir información nos pone en riesgo: robo de datos, virus y más. Es fundamental tomar conciencia sobre cómo usamos la tecnología a diario.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- INFORMACIÓN -->
+    <section class="container" id="informacion">
+        <h2 class="section-title">Información</h2>
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="info-icon">🔑</div>
+                <h3>Protegé tus datos</h3>
+                <p>Usa contraseñas seguras y no compartas información personal o sensible.</p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">💻</div>
+                <h3>Cuidá tus dispositivos</h3>
+                <p>Mantené tu sistema y apps actualizados y usá un antivirus confiable.</p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">🌐</div>
+                <h3>Navegá seguro</h3>
+                <p>Verificá links, evita enlaces sospechosos y ajustá tu privacidad.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- JUEGO -->
+    <section class="container" id="juego">
+        <div class="juego-section">
+            <h3>🎮 Actividad Interactiva</h3>
+            <p>Poné a prueba tus conocimientos sobre seguridad digital</p>
+            <button class="btn-jugar" onclick="abrirQuiz()">▶ Jugar</button>
+        </div>
+    </section>
+
+    <!-- QUIZ MODAL -->
+    <div class="quiz-modal" id="quizModal">
+        <div class="quiz-content">
+            <h2>🛡️ Quiz de Seguridad</h2>
+            <div id="quizPregunta" class="quiz-question"></div>
+            <div id="quizOpciones" class="quiz-options"></div>
+            <div id="quizResultado" class="quiz-result"></div>
+            <button class="btn-cerrar" onclick="cerrarQuiz()">Cerrar</button>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p class="creditos">Micaela Prieto , Brunella Troccaioli</p>
+        <p>© 2026 Seguridad Personal Tecnológica</p>
+    </footer>
+
+    <script>
+        const preguntas = [
+            {
+                pregunta: "¿Cuál es una buena práctica para proteger tus datos?",
+                opciones: [
+                    "Usar la misma contraseña en todos lados",
+                    "Usar contraseñas seguras y no compartirlas",
+                    "Compartir tu información con desconocidos",
+                    "Anotar tus contraseñas en un papel visible"
+                ],
+                correcta: 1
+            },
+            {
+                pregunta: "¿Qué debes hacer para cuidar tus dispositivos?",
+                opciones: [
+                    "No actualizar nunca el sistema",
+                    "Instalar cualquier archivo sin verificar",
+                    "Mantener el sistema actualizado y usar antivirus",
+                    "Desactivar el antivirus"
+                ],
+                correcta: 2
+            },
+            {
+                pregunta: "Antes de hacer clic en un enlace, debes...",
+                opciones: [
+                    "Hacer clic sin mirar",
+                    "Verificar que sea confiable",
+                    "Compartirlo con todos",
+                    "Ignorar las advertencias"
+                ],
+                correcta: 1
+            },
+            {
+                pregunta: "¿Qué información NO deberías compartir en internet?",
+                opciones: [
+                    "Tu nombre de usuario",
+                    "Tus datos personales y sensibles",
+                    "Tus gustos por música",
+                    "Tu comida favorita"
+                ],
+                correcta: 1
+            }
+        ];
+
+        let preguntaActual = 0;
+        let puntaje = 0;
+
+        function abrirQuiz() {
+            preguntaActual = 0;
+            puntaje = 0;
+            document.getElementById('quizModal').classList.add('active');
+            mostrarPregunta();
+        }
+
+        function cerrarQuiz() {
+            document.getElementById('quizModal').classList.remove('active');
+        }
+
+        function mostrarPregunta() {
+            const q = preguntas[preguntaActual];
+            document.getElementById('quizPregunta').textContent = q.pregunta;
+            document.getElementById('quizResultado').textContent = '';
+
+            const opcionesDiv = document.getElementById('quizOpciones');
+            opcionesDiv.innerHTML = '';
+
+            q.opciones.forEach((opcion, i) => {
+                const btn = document.createElement('div');
+                btn.className = 'quiz-option';
+                btn.textContent = opcion;
+                btn.onclick = () => responder(i, btn);
+                opcionesDiv.appendChild(btn);
+            });
+        }
+
+        function responder(indice, elemento) {
+            const q = preguntas[preguntaActual];
+            const opciones = document.querySelectorAll('.quiz-option');
+
+            opciones.forEach(op => op.onclick = null);
+
+            if (indice === q.correcta) {
+                elemento.classList.add('correct');
+                puntaje++;
+                document.getElementById('quizResultado').textContent = '✅ ¡Correcto!';
+            } else {
+                elemento.classList.add('wrong');
+                opciones[q.correcta].classList.add('correct');
+                document.getElementById('quizResultado').textContent = '❌ Incorrecto';
+            }
+
+            setTimeout(() => {
+                preguntaActual++;
+                if (preguntaActual < preguntas.length) {
+                    mostrarPregunta();
+                } else {
+                    document.getElementById('quizPregunta').textContent = `🎉 ¡Terminaste el quiz!`;
+                    document.getElementById('quizOpciones').innerHTML = '';
+                    document.getElementById('quizResultado').textContent = `Tu puntaje: ${puntaje} de ${preguntas.length}`;
+                }
+            }, 1500);
+        }
+    </script>
+
+</body>
+</html>
